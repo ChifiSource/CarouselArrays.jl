@@ -63,7 +63,7 @@ function getindex(ca::CarouselArray{<:Any}, i::Int64)
     if i < 1
         getindex(ca, length(ca) - abs(i))
     elseif i > length(ca)
-        getindex(ca, length(ca) - i)
+        getindex(ca, mod(i, length(ca)))
     else
         ca.dims[i]
     end
@@ -73,7 +73,7 @@ function setindex(ca::CarouselArray{<:Any}, v::Any, i::Int64)
     if i < 1
         setindex!(ca, v, length(ca) - abs(i))
     elseif i > length(ca)
-        setindex!(ca, v, length(ca) - i)
+        setindex!(ca, v, mod(i, length(ca)))
     else
         ca.dims[i] = v
     end
