@@ -69,7 +69,7 @@ function getindex(ca::CarouselArray{<:Any}, i::Int64)
     end
 end
 
-function setindex(ca::CarouselArray{<:Any}, v::Any, i::Int64)
+function setindex!(ca::CarouselArray{<:Any}, v::Any, i::Int64)
     if i < 1
         setindex!(ca, v, length(ca) - abs(i))
     elseif i > length(ca)
